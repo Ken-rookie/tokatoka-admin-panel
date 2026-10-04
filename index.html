@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f15a28">
+  <title>TokaToka Admin</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="toast-root" aria-live="polite"></div>
+
+  <section id="login-view" class="auth-view">
+    <div class="auth-card">
+      <div class="brand-mark">TT</div>
+      <p class="eyebrow">TOKATOKA</p>
+      <h1>Admin Portal</h1>
+      <p class="muted">Manage orders, menu items, customers, payments, and reviews.</p>
+      <form id="login-form" class="stack gap-16">
+        <label>Email<input id="login-email" type="email" autocomplete="email" required placeholder="admin@example.com"></label>
+        <label>Password<div class="password-field"><input id="login-password" type="password" autocomplete="current-password" required placeholder="••••••••"><button type="button" class="icon-btn" data-toggle-password="login-password">Show</button></div></label>
+        <button class="primary-btn full" type="submit">Sign in</button>
+        <p id="login-error" class="error-text hidden"></p>
+      </form>
+      <p class="auth-note">Access is limited to Supabase users whose profile role is <b>admin</b> or <b>staff</b>.</p>
+    </div>
+  </section>
+
+  <div id="app-view" class="app-shell hidden">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-top">
+        <div class="brand">
+          <div class="brand-mark small">TT</div>
+          <div><strong>TokaToka</strong><span>Admin Panel</span></div>
+        </div>
+        <button class="mobile-close icon-btn" id="close-sidebar" aria-label="Close menu">×</button>
+      </div>
+      <nav class="nav" id="main-nav">
+        <button class="nav-item active" data-page="dashboard"><span>⌂</span>Dashboard</button>
+        <button class="nav-item" data-page="orders"><span>▣</span>Orders</button>
+        <button class="nav-item" data-page="products"><span>◈</span>Products</button>
+        <button class="nav-item" data-page="categories"><span>◇</span>Categories</button>
+        <button class="nav-item" data-page="customers"><span>◎</span>Customers</button>
+        <button class="nav-item" data-page="payments"><span>₱</span>Payments</button>
+        <button class="nav-item" data-page="reviews"><span>★</span>Reviews</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="connection"><span class="status-dot" id="connection-dot"></span><span id="connection-label">Connected</span></div>
+        <button class="nav-item" data-page="settings"><span>⚙</span>Settings</button>
+        <button class="logout-btn" id="logout-btn">↪ <span>Sign out</span></button>
+      </div>
+    </aside>
+
+    <div class="main-area">
+      <header class="topbar">
+        <button class="menu-btn icon-btn" id="open-sidebar" aria-label="Open menu">☰</button>
+        <div class="breadcrumb"><span id="page-kicker">Overview</span><b id="page-title">Dashboard</b></div>
+        <div class="topbar-actions">
+          <button class="icon-btn notification-btn" id="refresh-btn" title="Refresh data">↻</button>
+          <div class="profile-chip"><div class="avatar" id="profile-avatar">A</div><div><b id="profile-name">Admin</b><span id="profile-role">admin</span></div></div>
+        </div>
+      </header>
+
+      <main class="content" id="content"></main>
+    </div>
+  </div>
+
+  <div id="modal-root"></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
